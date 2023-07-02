@@ -22,7 +22,7 @@ def get_keywords(inputs, beams=3, tokens=4096):
             input_sequences, return_tensors="pt", truncation=True, padding="max_length", max_length=512
         ).input_ids
         output = model.generate(input_ids, max_new_tokens=tokens,
-                                no_repeat_ngram_size=1, num_beams=beams)
+                                no_repeat_ngram_size=3, num_beams=beams)
         predicted = tokenizer.decode(output[0], skip_special_tokens=True)
         return predicted
 
@@ -32,4 +32,7 @@ if __name__ == '__main__':
     beams = int(sys.argv[2]) if len(sys.argv) > 2 else 3
     tokens = int(sys.argv[3]) if len(sys.argv) > 3 else 4096
     keywords = get_keywords(text, beams, tokens)
-    print(keywords)
+    if keywords is not None:
+        print(keywords.strip())
+    else:
+        print("")

@@ -1,5 +1,5 @@
-
 # nlp_tools
+
 by [ClarkTribeGames, LLC](https://www.clarktribegames.com)
 
 `nlp_tools` This repository contains Python scripts for Natural Language Processing tasks, using the Hugging Face Transformers library. The tasks include emotion detection from text, extracting keywords from text, and summarizing text.
@@ -21,25 +21,27 @@ git clone https://github.com/AznIronMan/nlp_tools.git
 
 ## Setup virtual Python environment
 
-We also recommend running this within a virtual Python environment (venv is given here, but Anaconda will work as well):
+We recommend using Anaconda for your virtual python environment:
 
 ```bash
-# macOS or Linux
 cd /path_of_your_choice
-python3 -m venv .venv
-source .env/bin/activate
+conda create -n nlp_tools
+conda activate nlp_tools
 ```
 
-```bash
-# Windows (cmdline in this example)
-cd /path_of_your_choice
-python.exe -m venv .venv
-.env/Scripts/activate.bat
-```
+Be sure that you have your env name before your prompt (e.g. **(nlp_tools)** /filepath/ # )
 
 ## Install Dependencies
 
-To install the required Python libraries for this project, use the `requirements.txt` file with pip:
+You will need a NVIDIA card for this. Install the appropriate Pytorch Cuda package from [https://pytorch.org/](https://pytorch.org/)
+
+This is the bash command we used:
+
+```bash
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+```
+
+Then install the required Python libraries for this project, use the `requirements.txt` file with pip:
 
 ```bash
 cd /path_of_your_choice
@@ -59,11 +61,13 @@ Each script can be run from the command line with additional arguments to specif
 # Usage
 
 Emotion Detection `emotions.py`
+
 ```bash
 python emotions.py "<Your Text Here>"
 ```
 
 Keywords Extraction `keywords.py`
+
 ```bash
 # num_beams = how many words you want per 'keyword' / # max_tokens is the max number of tokens for your response
 # num_beams and max_tokens are optional arguments - they default to 3 and 4096 respectively
@@ -71,6 +75,7 @@ python keywords.py "<Your Text Here>" [num_beams] [max_tokens]
 ```
 
 Text Summarization `summarizer.py`
+
 ```bash
 # threshold is the minimum word count to be considered for summarization - anything under this number will not be summarized - default: 32 (optional)
 # curve is the decimal that the word count is multiplied by to get the percentage for max and min length when max and min are invalid - default: 0.1 (optional)
@@ -78,7 +83,7 @@ Text Summarization `summarizer.py`
 python summarizer.py "<Your Text Here>" [max_length] [min_length] [threshold] [curve]
 ```
 
-**Note:**  Please replace `<Your Text Here>` with your input text. 
+**Note:** Please replace `<Your Text Here>` with your input text.
 **Also Note:** For `keywords.py` and `summarizer.py`, the additional arguments are optional and have default values if not specified.
 
 ## Dependencies
@@ -119,9 +124,10 @@ Here is a list of Python libraries used in this project:
 - xformers
 
 ## License
+
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
 ## Contact
 
-Discord:  `AznIronMan`
-E-Mail:   **geoff** `at` **clark tribe games** `dot` **com** (*no spaces and replace at with @ and dot with .*)
+Discord: `AznIronMan`
+E-Mail: **geoff** `at` **clark tribe games** `dot` **com** (_no spaces and replace at with @ and dot with ._)
